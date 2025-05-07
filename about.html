@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Silver Spoon Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#D2B48C',
+                        accent: '#F5DEB3',
+                        light: '#FFF8E7'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFF8E7;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #8B4513;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #8B4513;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background-color: #D2B48C;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <span class="text-primary text-3xl font-bold font-serif">Silver Spoon</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-primary transition">Home</a>
+                    <a href="about.html" class="nav-link text-primary font-medium">About Us</a>
+                    <a href="products.html" class="nav-link text-gray-700 hover:text-primary transition">Products</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-primary transition">Contact</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-primary transition">Home</a>
+                <a href="about.html" class="block py-2 text-primary font-medium">About Us</a>
+                <a href="products.html" class="block py-2 text-gray-700 hover:text-primary transition">Products</a>
+                <a href="contact.html" class="block py-2 text-gray-700 hover:text-primary transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header py-20 text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">About Silver Spoon</h1>
+        <p class="text-xl max-w-3xl mx-auto px-4">Our story of passion, tradition, and delicious baked goods</p>
+    </header>
+
+    <!-- Our Story Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold text-primary mb-6">Our Story</h2>
+                    <div class="space-y-6 text-gray-700">
+                        <p>Silver Spoon Bakery was founded in 1995 by master baker Bhavna Sharma, whose dream was to create a bakery that combined traditional techniques with innovative flavors.</p>
+                        <p>What started as a small corner shop with just three signature items has grown into a beloved local institution, serving thousands of customers each week with our expanded menu of artisanal breads, cakes, pastries, and seasonal specialties.</p>
+                        <p>Through the years, we've maintained our commitment to quality, using only the finest ingredients and refusing to take shortcuts that would compromise the integrity of our products.</p>
+                    </div>
+                    
+                    <div class="mt-8 space-y-6">
+                        <div class="timeline-item pb-8">
+                            <h3 class="text-xl font-bold text-primary">1995</h3>
+                            <p class="text-gray-700">Silver Spoon Bakery opens its doors in downtown Anytown.</p>
+                        </div>
+                        <div class="timeline-item pb-8">
+                            <h3 class="text-xl font-bold text-primary">2005</h3>
+                            <p class="text-gray-700">Expanded to our current location with a larger kitchen and seating area.</p>
+                        </div>
+                        <div class="timeline-item pb-8">
+                            <h3 class="text-xl font-bold text-primary">2015</h3>
+                            <p class="text-gray-700">Celebrated 20 years with the launch of our signature chocolate cake that won regional awards.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="text-xl font-bold text-primary">Today</h3>
+                            <p class="text-gray-700">Continuing our tradition of excellence while embracing new techniques and flavors.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-primary text-center mb-12">Meet Our Team</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="./cake/w1.jfif" alt="Bhavna Sharma" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Bhavna Sharma</h3>
+                        <p class="text-gray-500 mb-4">Founder & Master Baker</p>
+                        <p class="text-gray-700">With over 30 years of baking experience, Bhavna brings her passion and expertise to every recipe. She still oversees our kitchen and develops new seasonal offerings.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="./cake/m1.png" alt="Kabir Khanna" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Kabir Khanna</h3>
+                        <p class="text-gray-500 mb-4">Head Pastry Chef</p>
+                        <p class="text-gray-700">A graduate of the Culinary Institute, Kabir brings creativity and precision to our pastry selection. His innovative flavor combinations have become customer favorites.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="./cake/w2.jfif" alt="Avni Chauhan" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Avni Chauhan</h3>
+                        <p class="text-gray-500 mb-4">Artisan Bread Baker</p>
+                        <p class="text-gray-700">Avni specializes in artisan breads, focusing on traditional fermentation methods and organic ingredients. Her sourdough is legendary in the community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Philosophy -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="Fresh Ingredients" class="rounded-lg shadow-lg">
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-primary mb-6">Our Philosophy</h2>
+                    <div class="space-y-6 text-gray-700">
+                        <p>At Silver Spoon, we believe that exceptional baked goods start with exceptional ingredients. That's why we source locally whenever possible, partnering with farmers and producers who share our commitment to quality.</p>
+                        <p>We're proud to use:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Organic flour milled within 100 miles of our bakery</li>
+                            <li>Eggs from free-range, humanely raised chickens</li>
+                            <li>Seasonal fruits from local orchards</li>
+                            <li>Fair-trade chocolate and vanilla</li>
+                            <li>Butter from grass-fed cows</li>
+                        </ul>
+                        <p>We believe in traditional methods that take time but yield superior results. Many of our recipes require multiple days of preparation, allowing flavors to develop naturally and doughs to ferment properly.</p>
+                        <p>Most importantly, we believe that baking is an act of love and community. Every item that leaves our kitchen is crafted with care, because we know it will become part of your special moments and everyday joys.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold font-serif mb-4">Silver Spoon</h3>
+                    <p class="max-w-xs">Bringing joy through delicious baked goods since 1995.</p>
+                </div>
+                
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-accent transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-accent transition">About Us</a></li>
+                        <li><a href="products.html" class="hover:text-accent transition">Products</a></li>
+                        <li><a href="contact.html" class="hover:text-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-bold mb-4">Hours</h4>
+                    <ul class="space-y-2">
+                        <li>Monday - Friday: 7am - 7pm</li>
+                        <li>Saturday: 8am - 6pm</li>
+                        <li>Sunday: 8am - 3pm</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-pinterest text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Silver Spoon Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('slide-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('section').forEach(section => {
+                const elements = section.querySelectorAll('h2, p, .timeline-item');
+                elements.forEach((el, index) => {
+                    el.classList.remove('slide-in');
+                    el.style.opacity = 0;
+                    el.style.transform = 'translateY(20px)';
+                    el.style.animationDelay = `${index * 0.1}s`;
+                    observer.observe(el);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

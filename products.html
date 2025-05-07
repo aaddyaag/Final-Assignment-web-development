@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Silver Spoon Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#D2B48C',
+                        accent: '#F5DEB3',
+                        light: '#FFF8E7'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FFF8E7;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #8B4513;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .category-button {
+            transition: all 0.3s;
+        }
+        
+        .category-button.active {
+            background-color: #8B4513;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <span class="text-primary text-3xl font-bold font-serif">Silver Spoon</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-primary transition">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-primary transition">About Us</a>
+                    <a href="products.html" class="nav-link text-primary font-medium">Products</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-primary transition">Contact</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-primary transition">Home</a>
+                <a href="about.html" class="block py-2 text-gray-700 hover:text-primary transition">About Us</a>
+                <a href="products.html" class="block py-2 text-primary font-medium">Products</a>
+                <a href="contact.html" class="block py-2 text-gray-700 hover:text-primary transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header py-20 text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Products</h1>
+        <p class="text-xl max-w-3xl mx-auto px-4">Discover our handcrafted selection of baked goods made with love and the finest ingredients</p>
+    </header>
+
+    <!-- Product Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="category-button active px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium" data-category="all">All Products</button>
+                <button class="category-button px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium" data-category="cakes">Cakes</button>
+                <button class="category-button px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium" data-category="pastries">Pastries</button>
+                <button class="category-button px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium" data-category="breads">Breads</button>
+            </div>
+            
+            <!-- Cakes Section -->
+            <div class="product-section" data-category="cakes">
+                <h2 class="text-3xl font-bold text-primary mb-8">Cakes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cake 1 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/chocolate cake.jpg" alt="Chocolate Cake" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Chocolate Delight Cake</h3>
+                            <p class="text-gray-600 mb-4">Our signature chocolate cake with rich ganache and chocolate shavings.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">675 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cake 2 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/vanilla cake.jpg" alt="Vanilla Cake" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Vanilla Cake</h3>
+                            <p class="text-gray-600 mb-4">Light vanilla sponge with Madagascar vanilla bean buttercream.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">650 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cake 3 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/red velvet cake.jpg" alt="Red Velvet Cake" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Red Velvet Cake</h3>
+                            <p class="text-gray-600 mb-4">Classic red velvet with cream cheese frosting and white chocolate curls.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">675 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cake 4 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/carrot cake.jpg" alt="Carrot Cake" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Carrot Cake</h3>
+                            <p class="text-gray-600 mb-4">Moist carrot cake with walnuts, spices, and cream cheese frosting.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">700 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pastries Section -->
+            <div class="product-section mt-16" data-category="pastries">
+                <h2 class="text-3xl font-bold text-primary mb-8">Pastries</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Pastry 1 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Butter Croissants" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Coffee Mocha Cupcakes</h3>
+                            <p class="text-gray-600 mb-4">Buttery cupcakes with rich coffee syrup and smooth mocha butter cream.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">150 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pastry 2 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/strawberry cupcakes.jpg" alt="Strawberry Cupcakes" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Strawberry Cupcakes</h3>
+                            <p class="text-gray-600 mb-4">Soft and fluffy strawberry cupcakes filled with fresh strawberries and topped with a beautiful pink strawberry frosting.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">100 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pastry 3 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/fruit tart.jpg" alt="Fruit Tarts" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Fruit Tarts</h3>
+                            <p class="text-gray-600 mb-4">Buttery tart shell filled with vanilla pastry cream and topped with fresh seasonal fruits.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">175 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Breads Section -->
+            <div class="product-section mt-16" data-category="breads">
+                <h2 class="text-3xl font-bold text-primary mb-8">Breads</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Bread 1 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/doughnuts.jpg" alt="Doughnuts" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Doughnuts</h3>
+                            <p class="text-gray-600 mb-4">Tempting Range of soft, sweet and fluffy doughnuts.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">120 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bread 2 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/multigrain bread.jpg" alt="Multigrain Loaf" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Multigrain Loaf</h3>
+                            <p class="text-gray-600 mb-4">Hearty bread made with a blend of whole grains and seeds.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">300 Rs</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bread 3 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                        <div class="h-64 overflow-hidden">
+                            <img src="./cake/ciabatta.jpg" alt="Ciabatta" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary mb-2">Ciabatta</h3>
+                            <p class="text-gray-600 mb-4">Italian bread with a crisp crust and soft, airy interior.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary font-bold">350 Rs.</span>
+                                <button class="text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded transition">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Order CTA -->
+    <section class="py-16 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Looking for Something Special?</h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto">We love creating custom orders for special occasions. Contact us to discuss your ideas and let us create something unique for you.</p>
+            <a href="contact.html" class="bg-white text-primary hover:bg-light font-bold py-3 px-8 rounded-full inline-block transition">Request Custom Order</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold font-serif mb-4">Silver Spoon</h3>
+                    <p class="max-w-xs">Bringing joy through delicious baked goods since 1995.</p>
+                </div>
+                
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-accent transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-accent transition">About Us</a></li>
+                        <li><a href="products.html" class="hover:text-accent transition">Products</a></li>
+                        <li><a href="contact.html" class="hover:text-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-bold mb-4">Hours</h4>
+                    <ul class="space-y-2">
+                        <li>Monday - Friday: 7am - 7pm</li>
+                        <li>Saturday: 8am - 6pm</li>
+                        <li>Sunday: 8am - 3pm</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition"><i class="fab fa-pinterest text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Silver Spoon Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Category Filter
+        const categoryButtons = document.querySelectorAll('.category-button');
+        const productSections = document.querySelectorAll('.product-section');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.dataset.category;
+                
+                if (category === 'all') {
+                    // Show all sections
+                    productSections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                } else {
+                    // Hide all sections
+                    productSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show only the selected category
+                    document.querySelector(`.product-section[data-category="${category}"]`).style.display = 'block';
+                }
+            });
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('slide-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.product-card').forEach((card, index) => {
+                card.classList.remove('slide-in');
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.animationDelay = `${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
